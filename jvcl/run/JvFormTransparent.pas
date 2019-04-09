@@ -85,8 +85,7 @@ type
     { Mask specifies (depending on Mode) the region or the 32bit alpha channel background picture }
     property Mask: TBitmap read FMask write SetMask;
     { With MaskFromImage you can automatically use the image of a TImage component for the mask.
-      This is especially helpfull if you want to use a PNG image with tfmLayeredWindow. Setting
-      the property automatically sets the image's Visible property to False in the IDE (design time). }
+      This is especially helpfull if you want to use a PNG image with tfmLayeredWindow}
     property MaskFromImage: TImage read FMaskFromImage write SetMaskFromImage;
     { If AutoSize is True the top level window will be resized to fit the Mask }
     property AutoSize: Boolean read FAutoSize write SetAutoSize default False;
@@ -439,9 +438,6 @@ begin
     FMaskFromImage := Value;
     if FMaskFromImage <> nil then
       FMaskFromImage.FreeNotification(Self);
-
-    if (csDesigning in ComponentState) and (FMaskFromImage <> nil) then
-      FMaskFromImage.Visible := False;
 
     UpdateMaskFromImage;
   end;
